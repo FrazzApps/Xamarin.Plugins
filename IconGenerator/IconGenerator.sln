@@ -3,24 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrazzApps.Xamarin.Geolocator", "Geolocator\FrazzApps.Xamarin.Geolocator\FrazzApps.Xamarin.Geolocator.csproj", "{14C534B6-1984-41A9-A384-D3A5508588E3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrazzApps.Xamarin.IconGenerator", "IconGenerator\FrazzApps.Xamarin.IconGenerator\FrazzApps.Xamarin.IconGenerator.csproj", "{14C534B6-1984-41A9-A384-D3A5508588E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrazzApps.Xamarin.Geolocator.iOS", "Geolocator\FrazzApps.Xamarin.Geolocator.iOS\FrazzApps.Xamarin.Geolocator.iOS.csproj", "{D525F236-6A2D-4010-B1CC-4A4B8581C90B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrazzApps.Xamarin.IconGenerator.iOS", "IconGenerator\FrazzApps.Xamarin.IconGenerator.iOS\FrazzApps.Xamarin.IconGenerator.iOS.csproj", "{D525F236-6A2D-4010-B1CC-4A4B8581C90B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrazzApps.Xamarin.Geolocator.iOSUnified", "Geolocator\FrazzApps.Xamarin.Geolocator.iOSUnified\FrazzApps.Xamarin.Geolocator.iOSUnified.csproj", "{167D1D89-0FB4-49AE-A03F-84A6C61305C3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrazzApps.Xamarin.IconGenerator.iOSUnified", "IconGenerator\FrazzApps.Xamarin.IconGenerator.iOSUnified\FrazzApps.Xamarin.IconGenerator.iOSUnified.csproj", "{C44DAFDD-DF13-43F6-AEF3-3BA7FB87CDB8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrazzApps.Xamarin.Geolocator.Android", "Geolocator\FrazzApps.Xamarin.Geolocator.Android\FrazzApps.Xamarin.Geolocator.Android.csproj", "{AD2D2DB4-E781-4CF1-9B62-3AAD264F196D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrazzApps.Xamarin.IconGenerator.Android", "IconGenerator\FrazzApps.Xamarin.IconGenerator.Android\FrazzApps.Xamarin.IconGenerator.Android.csproj", "{AD2D2DB4-E781-4CF1-9B62-3AAD264F196D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrazzApps.Xamarin.Geolocator.WinPhone", "Geolocator\FrazzApps.Xamarin.Geolocator.WinPhone\FrazzApps.Xamarin.Geolocator.WinPhone.csproj", "{983B7EFF-7E75-4A87-890A-744A0B4C5232}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrazzApps.Xamarin.IconGenerator.WinPhone", "IconGenerator\FrazzApps.Xamarin.IconGenerator.WinPhone\FrazzApps.Xamarin.IconGenerator.WinPhone.csproj", "{983B7EFF-7E75-4A87-890A-744A0B4C5232}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Platforms", "Platforms", "{BAA9D8A0-797E-4117-9AEA-FD2468ACECCC}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{E55DE365-FF45-4CBC-9F30-B430AFA3C27F}"
-	ProjectSection(SolutionItems) = preProject
-		.nuget\NuGet.Config = .nuget\NuGet.Config
-		.nuget\NuGet.exe = .nuget\NuGet.exe
-		.nuget\NuGet.targets = .nuget\NuGet.targets
-	EndProjectSection
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Platforms", "Platforms", "{845CAB1D-8B09-4DAF-9023-C5FEE9E87BCE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -48,14 +41,14 @@ Global
 		{D525F236-6A2D-4010-B1CC-4A4B8581C90B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D525F236-6A2D-4010-B1CC-4A4B8581C90B}.Release|ARM.ActiveCfg = Release|Any CPU
 		{D525F236-6A2D-4010-B1CC-4A4B8581C90B}.Release|x86.ActiveCfg = Release|Any CPU
-		{167D1D89-0FB4-49AE-A03F-84A6C61305C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{167D1D89-0FB4-49AE-A03F-84A6C61305C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{167D1D89-0FB4-49AE-A03F-84A6C61305C3}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{167D1D89-0FB4-49AE-A03F-84A6C61305C3}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{167D1D89-0FB4-49AE-A03F-84A6C61305C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{167D1D89-0FB4-49AE-A03F-84A6C61305C3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{167D1D89-0FB4-49AE-A03F-84A6C61305C3}.Release|ARM.ActiveCfg = Release|Any CPU
-		{167D1D89-0FB4-49AE-A03F-84A6C61305C3}.Release|x86.ActiveCfg = Release|Any CPU
+		{C44DAFDD-DF13-43F6-AEF3-3BA7FB87CDB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C44DAFDD-DF13-43F6-AEF3-3BA7FB87CDB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C44DAFDD-DF13-43F6-AEF3-3BA7FB87CDB8}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{C44DAFDD-DF13-43F6-AEF3-3BA7FB87CDB8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C44DAFDD-DF13-43F6-AEF3-3BA7FB87CDB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C44DAFDD-DF13-43F6-AEF3-3BA7FB87CDB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C44DAFDD-DF13-43F6-AEF3-3BA7FB87CDB8}.Release|ARM.ActiveCfg = Release|Any CPU
+		{C44DAFDD-DF13-43F6-AEF3-3BA7FB87CDB8}.Release|x86.ActiveCfg = Release|Any CPU
 		{AD2D2DB4-E781-4CF1-9B62-3AAD264F196D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AD2D2DB4-E781-4CF1-9B62-3AAD264F196D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD2D2DB4-E781-4CF1-9B62-3AAD264F196D}.Debug|ARM.ActiveCfg = Debug|Any CPU
@@ -81,9 +74,9 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{D525F236-6A2D-4010-B1CC-4A4B8581C90B} = {BAA9D8A0-797E-4117-9AEA-FD2468ACECCC}
-		{167D1D89-0FB4-49AE-A03F-84A6C61305C3} = {BAA9D8A0-797E-4117-9AEA-FD2468ACECCC}
-		{AD2D2DB4-E781-4CF1-9B62-3AAD264F196D} = {BAA9D8A0-797E-4117-9AEA-FD2468ACECCC}
-		{983B7EFF-7E75-4A87-890A-744A0B4C5232} = {BAA9D8A0-797E-4117-9AEA-FD2468ACECCC}
+		{D525F236-6A2D-4010-B1CC-4A4B8581C90B} = {845CAB1D-8B09-4DAF-9023-C5FEE9E87BCE}
+		{C44DAFDD-DF13-43F6-AEF3-3BA7FB87CDB8} = {845CAB1D-8B09-4DAF-9023-C5FEE9E87BCE}
+		{AD2D2DB4-E781-4CF1-9B62-3AAD264F196D} = {845CAB1D-8B09-4DAF-9023-C5FEE9E87BCE}
+		{983B7EFF-7E75-4A87-890A-744A0B4C5232} = {845CAB1D-8B09-4DAF-9023-C5FEE9E87BCE}
 	EndGlobalSection
 EndGlobal

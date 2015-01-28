@@ -4,11 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FrazzApps.Geolocator
+namespace FrazzApps.Xamarin.Geolocator
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class Position
     {
+        /// <summary>
+        /// Position Contructor
+        /// </summary>
         public Position() { }
+
+        /// <summary>
+        /// Position Contructor
+        /// </summary>
+        /// <param name="latitude"></param>
+        /// <param name="longitude"></param>
+        public Position(double latitude, double longitude) { Latitude = latitude; Longitude = longitude; }
 
         // Summary:
         //     Gets or sets the potential position error radius in meters.

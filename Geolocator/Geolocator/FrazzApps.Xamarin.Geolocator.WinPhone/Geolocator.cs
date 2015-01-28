@@ -1,17 +1,25 @@
-﻿[assembly: Xamarin.Forms.Dependency(typeof(FrazzApps.Xamarin.Geolocator.WinPhone.Geolocator_WinPhone))]
+﻿using FrazzApps.Xamarin.Geolocator;
+using FrazzApps.Xamarin.Geolocator.Abstractions;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using FrazzApps.Xamarin.Geolocator.WinPhone;
+using Xamarin.Forms;
+
+[assembly: Dependency(typeof(FrazzApps.Xamarin.Geolocator.WinPhone.Geolocator))]
 namespace FrazzApps.Xamarin.Geolocator.WinPhone
 {
-    using FrazzApps.Geolocator;
-    using FrazzApps.Geolocator.Abstractions;
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-    using System.Threading;
-    using System.Threading.Tasks;
-    using Windows.Devices.Geolocation;
 
-    public class Geolocator_WinPhone : IGeolocator
+
+    public class Geolocator : IGeolocator
     {
+        /// <summary>
+        /// Used for registration with dependency service
+        /// </summary>
+        public static void Init() { }
+
         Windows.Devices.Geolocation.Geolocator geolocator = new Windows.Devices.Geolocation.Geolocator();
 
         public double DesiredAccuracy { get { return (geolocator.DesiredAccuracyInMeters.HasValue) ? geolocator.DesiredAccuracyInMeters.Value : double.NaN; } set { geolocator.DesiredAccuracyInMeters = (uint)value; } }
@@ -22,14 +30,14 @@ namespace FrazzApps.Xamarin.Geolocator.WinPhone
                 if (geolocator == null) return false;
                 switch (geolocator.LocationStatus)
                 {
-                    case PositionStatus.Disabled:
-                    case PositionStatus.Initializing:
-                    case PositionStatus.NoData:
-                    case PositionStatus.NotAvailable:
-                    case PositionStatus.NotInitialized:
+                    case Windows.Devices.Geolocation.PositionStatus.Disabled:
+                    case Windows.Devices.Geolocation.PositionStatus.Initializing:
+                    case Windows.Devices.Geolocation.PositionStatus.NoData:
+                    case Windows.Devices.Geolocation.PositionStatus.NotAvailable:
+                    case Windows.Devices.Geolocation.PositionStatus.NotInitialized:
                         return false;
                         break;
-                    case PositionStatus.Ready:
+                    case Windows.Devices.Geolocation.PositionStatus.Ready:
                         return true;
                         break;
                 }
@@ -99,29 +107,29 @@ namespace FrazzApps.Xamarin.Geolocator.WinPhone
 
         }
 
-        void geolocator_StatusChanged(Windows.Devices.Geolocation.Geolocator sender, StatusChangedEventArgs args)
+        void geolocator_StatusChanged(Windows.Devices.Geolocation.Geolocator sender, Windows.Devices.Geolocation.StatusChangedEventArgs args)
         {
             if (this.IsListening)
             {
                 switch(args.Status)
                 {
-                    case PositionStatus.Disabled:
-                    case PositionStatus.Initializing:
+                    case Windows.Devices.Geolocation.PositionStatus.Disabled:
+                    case Windows.Devices.Geolocation.PositionStatus.Initializing:
                         break;
-                    case PositionStatus.NoData:
-                    case PositionStatus.NotAvailable:
+                    case Windows.Devices.Geolocation.PositionStatus.NoData:
+                    case Windows.Devices.Geolocation.PositionStatus.NotAvailable:
                         this.PositionError(sender, new PositionErrorEventArgs(GeolocationError.PositionUnavailable));
                         break;
-                    case PositionStatus.NotInitialized:
+                    case Windows.Devices.Geolocation.PositionStatus.NotInitialized:
                         this.PositionError(sender, new PositionErrorEventArgs(GeolocationError.Unauthorized));
                         break;
-                    case PositionStatus.Ready:
+                    case Windows.Devices.Geolocation.PositionStatus.Ready:
                         break;
                 }                            
             }
         }
 
-        void geolocator_PositionChanged(Windows.Devices.Geolocation.Geolocator sender, PositionChangedEventArgs args)
+        void geolocator_PositionChanged(Windows.Devices.Geolocation.Geolocator sender, Windows.Devices.Geolocation.PositionChangedEventArgs args)
         {
             if (this.IsListening)
             {

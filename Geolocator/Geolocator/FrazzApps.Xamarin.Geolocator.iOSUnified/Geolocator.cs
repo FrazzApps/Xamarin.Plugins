@@ -1,17 +1,27 @@
-﻿[assembly: Xamarin.Forms.Dependency(typeof(FrazzApps.Xamarin.Geolocator.iOSUnified.Geolocator_iOSUnified))]
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using FrazzApps.Xamarin.Geolocator.Abstractions;
+using CoreLocation;
+using FrazzApps.Xamarin.Geolocator;
+using Xamarin.Forms;
+using FrazzApps.Xamarin.Geolocator.iOSUnified;
+
+[assembly: Dependency(typeof(FrazzApps.Xamarin.Geolocator.iOSUnified.Geolocator))]
 namespace FrazzApps.Xamarin.Geolocator.iOSUnified
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-    using System.Threading;
-    using System.Threading.Tasks;
-    using FrazzApps.Geolocator.Abstractions;
-    using CoreLocation;
-    using FrazzApps.Geolocator;
 
-    public class Geolocator_iOSUnified : IGeolocator
+
+    public class Geolocator : IGeolocator
     {
+        /// <summary>
+        /// Used for registration with dependency service
+        /// </summary>
+        public static void Init() { }
+        public Geolocator() { }
+
         public double DesiredAccuracy { get; set; }
         public bool IsGeolocationEnabled { get; private set; }
         public bool IsListening { get; private set; }

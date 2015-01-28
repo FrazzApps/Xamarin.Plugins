@@ -1,20 +1,30 @@
-﻿[assembly: Xamarin.Forms.Dependency(typeof(FrazzApps.Xamarin.Geolocator.Andriod.Geolocator_Android))]
-namespace FrazzApps.Xamarin.Geolocator.Andriod
-{
-    using Android.App;
-    using Android.Locations;
-    using Android.OS;
-    using Android.Util;
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-    using System.Threading;
-    using System.Threading.Tasks;
-    using FrazzApps.Geolocator.Abstractions;
-    using FrazzApps.Geolocator;
+﻿using Android.App;
+using Android.Locations;
+using Android.OS;
+using Android.Util;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using FrazzApps.Xamarin.Geolocator.Abstractions;
+using FrazzApps.Xamarin.Geolocator;
+using Xamarin.Forms;
+using FrazzApps.Xamarin.Geolocator.Android;
 
-    public class Geolocator_Android : Activity, IGeolocator, ILocationListener
+[assembly: Dependency(typeof(FrazzApps.Xamarin.Geolocator.Android.Geolocator))]
+namespace FrazzApps.Xamarin.Geolocator.Android
+{
+
+
+    public class Geolocator : Activity, IGeolocator, ILocationListener
     {
+        /// <summary>
+        /// Used for registration with dependency service
+        /// </summary>
+        public static void Init() { }
+        public Geolocator() { }
+
         public double DesiredAccuracy { get; set; }
         public bool IsGeolocationEnabled { get { return (!String.IsNullOrWhiteSpace(_locationProvider)); } }
         public bool IsListening { get; private set; }
@@ -164,7 +174,7 @@ namespace FrazzApps.Xamarin.Geolocator.Andriod
             this.IsListening = false;
         }
 
-        protected override void OnCreate(Android.OS.Bundle savedInstanceState)
+        protected override void OnCreate(global::Android.OS.Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 

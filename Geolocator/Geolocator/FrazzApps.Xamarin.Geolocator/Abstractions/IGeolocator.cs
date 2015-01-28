@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace FrazzApps.Geolocator.Abstractions
+namespace FrazzApps.Xamarin.Geolocator.Abstractions
 {
     public interface IGeolocator
     {

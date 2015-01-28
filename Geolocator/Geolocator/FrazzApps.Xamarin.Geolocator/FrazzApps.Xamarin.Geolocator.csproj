@@ -40,6 +40,7 @@
   <ItemGroup>
     <Compile Include="Abstractions\IGeolocator.cs" />
     <Compile Include="GeolocationError.cs" />
+    <Compile Include="Geolocator.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="PositionErrorEventArgs.cs" />
     <Compile Include="PositionEventArgs.cs" />

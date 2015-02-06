@@ -25,23 +25,26 @@ namespace FrazzApps.Xamarin.AppRater
         public string FeedbackEmail { get; set; }
         public string FeedbackSubject { get; set; }
         public string FeedbackBody { get; set; }
+        public string AppId { get; set; }
+        public string AppName { get; set; }
 
-        public RateFeedbackDialog(string feedbackEmail)
+        public RateFeedbackDialog(string feedbackEmail, string appName, string appId)
         {
-            IAppInfo appInfo = DependencyService.Get<IAppInfo>();
+            AppId = appId;
+            AppName = appName;
 
-            RateMessageTitle = "Enjoying " + appInfo.AppName + "?";
+            RateMessageTitle = "Enjoying " + appName + "?";
             RateMessage = "We'd love you to rate our app 5 stars.\n Showing us some love on the store helps us to contrinue to work on the app and make things better!";
             RateButtonLabel = "rate 5 stars";
             RateCancelLabel = "no thanks";
 
             FeebackMessageTitle = "Can we make it better?";
-            FeebackMessage = "Sorry to hear you didn't want to rate " + appInfo.AppName + ".\n Tell us about your experience or suggest how we can make it even better.";
+            FeebackMessage = "Sorry to hear you didn't want to rate " + appName + ".\n Tell us about your experience or suggest how we can make it even better.";
             FeebackButtonLabel = "give feedback";
             FeebackCancelLabel = "no thanks";
 
             FeedbackEmail = feedbackEmail;
-            FeedbackSubject = appInfo.AppName + " Feedback";
+            FeedbackSubject = appName + " Feedback";
             FeedbackBody = "";
         }
 
@@ -51,7 +54,6 @@ namespace FrazzApps.Xamarin.AppRater
         public async void Show(Page callingPage)
         {
             RateFeedbackResult result = RateFeedbackResult.None;
-            IAppInfo appInfo = DependencyService.Get<IAppInfo>();
 
             await Task.Delay(1);
      
@@ -62,7 +64,7 @@ namespace FrazzApps.Xamarin.AppRater
                 if (r.Result)
                 {
                     IAppRater rater = DependencyService.Get<IAppRater>();
-                    rater.RateApp(appInfo.AppId);
+                    rater.RateApp(this.AppId);
                     result = RateFeedbackResult.Rate;
 
                     this.RateFeedbackCompleted(callingPage, new RateFeedbackEventArgs(result));

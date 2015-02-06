@@ -38,7 +38,6 @@
     <DocumentationFile>bin\Release\FrazzApps.Xamarin.AppRater.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Abstractions\IAppInfo.cs" />
     <Compile Include="Abstractions\IAppRater.cs" />
     <Compile Include="Abstractions\IEmailComposer.cs" />
     <Compile Include="AppRater.cs" />

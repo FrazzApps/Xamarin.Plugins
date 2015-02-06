@@ -17,7 +17,6 @@ namespace FrazzApps.Xamarin.AppRater.WinPhone
         /// </summary>
         public static void Init()
         {
-            AppInfo.Init();
             EmailComposer.Init();
         }
         public AppRater() { }

@@ -38,7 +38,6 @@
     <DocumentationFile>bin\iPhone\Release\FrazzApps.Xamarin.AppRater.iOSUnified.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="AppInfo.cs" />
     <Compile Include="AppRater.cs" />
     <Compile Include="EmailComposer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

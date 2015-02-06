@@ -19,7 +19,6 @@ namespace FrazzApps.Xamarin.AppRater.iOSUnified
         /// </summary>
         public static void Init()
         {
-            AppInfo.Init();
             EmailComposer.Init();
         }
         public AppRater() { }

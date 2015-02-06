@@ -62,7 +62,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppInfo.cs" />
     <Compile Include="AppRater.cs" />
     <Compile Include="EmailComposer.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />

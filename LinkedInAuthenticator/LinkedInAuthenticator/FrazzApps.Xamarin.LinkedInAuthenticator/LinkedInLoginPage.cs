@@ -11,13 +11,13 @@ namespace FrazzApps.Xamarin.LinkedInAuthenticator
     {
         public event EventHandler<LinkedInAuthenticationEventArgs> SignInCompleted;
 
-        public LinkedInLoginPage(string key, string secret, string scope)
+        public LinkedInLoginPage(string key, string secret, string scope, string redirectURL)
         {
             this.Title = "LinkedInLoginPage";
 
             WebView browser = new WebView();
 
-            LinkedInConnection connection = new LinkedInConnection(key, secret, scope);
+            LinkedInConnection connection = new LinkedInConnection(key, secret, scope, redirectURL);
             connection.SignIn(browser);
 
             connection.SignInCompleted += Connection_SignInCompleted;

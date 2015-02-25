@@ -11,6 +11,7 @@ using FrazzApps.Xamarin.Geolocator.Abstractions;
 using FrazzApps.Xamarin.Geolocator;
 using Xamarin.Forms;
 using FrazzApps.Xamarin.Geolocator.Android;
+using Android.Content;
 
 [assembly: Dependency(typeof(FrazzApps.Xamarin.Geolocator.Android.Geolocator))]
 namespace FrazzApps.Xamarin.Geolocator.Android
@@ -36,6 +37,7 @@ namespace FrazzApps.Xamarin.Geolocator.Android
 
         internal Position ToPosition(Location location)
         {
+            (new DateTime(1970, 1, 1)).AddMilliseconds(location.Time);
             return new Position()
             {
                 Accuracy = location.Accuracy,
@@ -45,7 +47,7 @@ namespace FrazzApps.Xamarin.Geolocator.Android
                 Latitude = location.Latitude,
                 Longitude = location.Longitude,
                 Speed = location.Speed,
-                Timestamp = new DateTimeOffset(1970,1,1,0,0,0, new TimeSpan(0,0,0,0, (int)location.Time))
+                Timestamp = (new DateTime(1970, 1, 1)).AddMilliseconds(location.Time)
             };
         }
 
@@ -79,7 +81,7 @@ namespace FrazzApps.Xamarin.Geolocator.Android
 
                         return ToPosition(this._currentLocation);
                     }
-                    else
+                    else  
                     {
                         Log.Info("Geolocator", "No location providers available");
                     }
@@ -231,7 +233,7 @@ namespace FrazzApps.Xamarin.Geolocator.Android
 
         private void InitializeLocationManager()
         {
-            _locationManager = (LocationManager)GetSystemService(LocationService);
+            _locationManager = (LocationManager)global::Android.App.Application.Context.GetSystemService(Context.LocationService); //GetSystemService(LocationService);
 
             Criteria criteriaForLocationService = new Criteria
             {

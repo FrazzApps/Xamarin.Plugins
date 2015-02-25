@@ -56,6 +56,6 @@ namespace FrazzApps.Xamarin.Geolocator
         //
         // Summary:
         //     Gets or sets the time of the reading.
-        public DateTimeOffset Timestamp { get; set; }
+        public DateTime Timestamp { get; set; }
     }
 }

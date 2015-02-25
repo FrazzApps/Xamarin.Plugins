@@ -63,7 +63,7 @@ namespace FrazzApps.Xamarin.Geolocator.WinPhone
                 Latitude = position.Coordinate.Latitude,
                 Longitude = position.Coordinate.Longitude,
                 Speed = position.Coordinate.Speed,
-                Timestamp = position.Coordinate.Timestamp
+                Timestamp = position.Coordinate.Timestamp.DateTime
             };
         }
 
@@ -143,7 +143,7 @@ namespace FrazzApps.Xamarin.Geolocator.WinPhone
                     Latitude = position.Coordinate.Latitude,
                     Longitude = position.Coordinate.Longitude,
                     Speed = position.Coordinate.Speed,
-                    Timestamp = position.Coordinate.Timestamp
+                    Timestamp = position.Coordinate.Timestamp.DateTime
                 };
                 this.PositionChanged(sender, new PositionEventArgs(p));
             }

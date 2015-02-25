@@ -25,16 +25,17 @@ namespace FrazzApps.Xamarin.LinkedInAuthenticator
         internal DateTime AccessTokenExpiry { get; set; }
 
         private const string AuthoriseURL = "https://www.linkedin.com/uas/oauth2/authorization";
-        private const string RedirectURL = "https://www.facebook.com/connect/login_success.html"; //TODO Set the Success page
+        private string RedirectURL = "http://localhost/oauth"; //TODO Set the Success page
         private const string AccessTokenURL = "https://www.linkedin.com/uas/oauth2/accessToken";
         //TODO -> private const string RequestTokenURL = "https://graph.linkedin.com/oauth/request_token";
 
 
-        public LinkedInConnection(string key, string secret, string scope)
+        public LinkedInConnection(string key, string secret, string scope, string redirectURL)
         {
             this.Key = key;
             this.Secret = secret;
             this.Scope = scope;
+            this.RedirectURL = redirectURL;
         }
 
 

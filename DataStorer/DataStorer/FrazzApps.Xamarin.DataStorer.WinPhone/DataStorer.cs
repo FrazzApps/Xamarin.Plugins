@@ -1,13 +1,13 @@
 ﻿using FrazzApps.Xamarin.DataStorer.Abstractions;
 using System;
 using Xamarin.Forms;
-using FrazzApps.Xamarin.DataStorer.WindowsPhone;
+using FrazzApps.Xamarin.DataStorer.WinPhone;
 using System.Threading.Tasks;
 using Windows.Storage;
 using System.IO;
 
 [assembly: Dependency(typeof(DataStorer))]
-namespace FrazzApps.Xamarin.DataStorer.WindowsPhone
+namespace FrazzApps.Xamarin.DataStorer.WinPhone
 {
     /// <summary>
     /// DataStorer Implementation

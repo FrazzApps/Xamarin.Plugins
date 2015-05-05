@@ -1,0 +1,89 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrazzApps.Xamarin.AppInformer", "AppInformer\FrazzApps.Xamarin.AppInformer\FrazzApps.Xamarin.AppInformer.csproj", "{C9A3D40B-5E27-4476-ABB6-C42B959D3968}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrazzApps.Xamarin.AppInformer.iOS", "AppInformer\FrazzApps.Xamarin.AppInformer.iOS\FrazzApps.Xamarin.AppInformer.iOS.csproj", "{8432DBCC-4881-4611-99D9-0BCA7521BD13}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrazzApps.Xamarin.AppInformer.iOSUnified", "AppInformer\FrazzApps.Xamarin.AppInformer.iOSUnified\FrazzApps.Xamarin.AppInformer.iOSUnified.csproj", "{A2CAD130-CDC2-4EE8-AB8B-2DECC066A5B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrazzApps.Xamarin.AppInformer.Android", "AppInformer\FrazzApps.Xamarin.AppInformer.Android\FrazzApps.Xamarin.AppInformer.Android.csproj", "{C826039A-7758-41FE-BD8B-62E5C3CB663F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrazzApps.Xamarin.AppInformer.WinPhone", "AppInformer\FrazzApps.Xamarin.AppInformer.WinPhone\FrazzApps.Xamarin.AppInformer.WinPhone.csproj", "{18F9711E-8C73-4F0A-AE59-58BA56D8D43B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Platforms", "Platforms", "{A6056E60-B710-4919-A19D-CBC62440D12C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{8A2C0B2B-2768-4DA9-8730-CDC115F02723}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|ARM = Debug|ARM
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|ARM = Release|ARM
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C9A3D40B-5E27-4476-ABB6-C42B959D3968}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9A3D40B-5E27-4476-ABB6-C42B959D3968}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9A3D40B-5E27-4476-ABB6-C42B959D3968}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{C9A3D40B-5E27-4476-ABB6-C42B959D3968}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C9A3D40B-5E27-4476-ABB6-C42B959D3968}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9A3D40B-5E27-4476-ABB6-C42B959D3968}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9A3D40B-5E27-4476-ABB6-C42B959D3968}.Release|ARM.ActiveCfg = Release|Any CPU
+		{C9A3D40B-5E27-4476-ABB6-C42B959D3968}.Release|x86.ActiveCfg = Release|Any CPU
+		{8432DBCC-4881-4611-99D9-0BCA7521BD13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8432DBCC-4881-4611-99D9-0BCA7521BD13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8432DBCC-4881-4611-99D9-0BCA7521BD13}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{8432DBCC-4881-4611-99D9-0BCA7521BD13}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8432DBCC-4881-4611-99D9-0BCA7521BD13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8432DBCC-4881-4611-99D9-0BCA7521BD13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8432DBCC-4881-4611-99D9-0BCA7521BD13}.Release|ARM.ActiveCfg = Release|Any CPU
+		{8432DBCC-4881-4611-99D9-0BCA7521BD13}.Release|x86.ActiveCfg = Release|Any CPU
+		{A2CAD130-CDC2-4EE8-AB8B-2DECC066A5B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2CAD130-CDC2-4EE8-AB8B-2DECC066A5B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2CAD130-CDC2-4EE8-AB8B-2DECC066A5B0}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{A2CAD130-CDC2-4EE8-AB8B-2DECC066A5B0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A2CAD130-CDC2-4EE8-AB8B-2DECC066A5B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2CAD130-CDC2-4EE8-AB8B-2DECC066A5B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2CAD130-CDC2-4EE8-AB8B-2DECC066A5B0}.Release|ARM.ActiveCfg = Release|Any CPU
+		{A2CAD130-CDC2-4EE8-AB8B-2DECC066A5B0}.Release|x86.ActiveCfg = Release|Any CPU
+		{C826039A-7758-41FE-BD8B-62E5C3CB663F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C826039A-7758-41FE-BD8B-62E5C3CB663F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C826039A-7758-41FE-BD8B-62E5C3CB663F}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{C826039A-7758-41FE-BD8B-62E5C3CB663F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C826039A-7758-41FE-BD8B-62E5C3CB663F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C826039A-7758-41FE-BD8B-62E5C3CB663F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C826039A-7758-41FE-BD8B-62E5C3CB663F}.Release|ARM.ActiveCfg = Release|Any CPU
+		{C826039A-7758-41FE-BD8B-62E5C3CB663F}.Release|x86.ActiveCfg = Release|Any CPU
+		{18F9711E-8C73-4F0A-AE59-58BA56D8D43B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18F9711E-8C73-4F0A-AE59-58BA56D8D43B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18F9711E-8C73-4F0A-AE59-58BA56D8D43B}.Debug|ARM.ActiveCfg = Debug|ARM
+		{18F9711E-8C73-4F0A-AE59-58BA56D8D43B}.Debug|ARM.Build.0 = Debug|ARM
+		{18F9711E-8C73-4F0A-AE59-58BA56D8D43B}.Debug|x86.ActiveCfg = Debug|x86
+		{18F9711E-8C73-4F0A-AE59-58BA56D8D43B}.Debug|x86.Build.0 = Debug|x86
+		{18F9711E-8C73-4F0A-AE59-58BA56D8D43B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18F9711E-8C73-4F0A-AE59-58BA56D8D43B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18F9711E-8C73-4F0A-AE59-58BA56D8D43B}.Release|ARM.ActiveCfg = Release|ARM
+		{18F9711E-8C73-4F0A-AE59-58BA56D8D43B}.Release|ARM.Build.0 = Release|ARM
+		{18F9711E-8C73-4F0A-AE59-58BA56D8D43B}.Release|x86.ActiveCfg = Release|x86
+		{18F9711E-8C73-4F0A-AE59-58BA56D8D43B}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8432DBCC-4881-4611-99D9-0BCA7521BD13} = {A6056E60-B710-4919-A19D-CBC62440D12C}
+		{A2CAD130-CDC2-4EE8-AB8B-2DECC066A5B0} = {A6056E60-B710-4919-A19D-CBC62440D12C}
+		{C826039A-7758-41FE-BD8B-62E5C3CB663F} = {A6056E60-B710-4919-A19D-CBC62440D12C}
+		{18F9711E-8C73-4F0A-AE59-58BA56D8D43B} = {A6056E60-B710-4919-A19D-CBC62440D12C}
+	EndGlobalSection
+EndGlobal

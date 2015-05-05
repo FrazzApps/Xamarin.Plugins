@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -32,26 +33,39 @@ namespace FrazzApps.Xamarin.GoogleAnalyticsConnector
 
         private async void Track(Uri url)
         {   
-             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-            request.Method = "POST";
+            //HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            //request.Method = "POST";
+            //request.ContentType = "application/x-www-form-urlencoded";
+            
+            StringContent queryString = new StringContent(url.Query);
 
-            WebResponse response = null;
+            HttpClient client = new HttpClient();
+
+
+           // WebResponse response = null;
+            HttpResponseMessage response = null;
             try
             {
-                response = await HttpWebHelper.GetResponseAsync(request);
+                response = await client.PostAsync(url, queryString);
+                //response = await HttpWebHelper.GetResponseAsync(request);
 
-                System.Diagnostics.Debug.WriteLine("Tracking result = [" + ((HttpWebResponse)response).StatusCode + "] " + ((HttpWebResponse)response).StatusDescription);
-
+                //System.Diagnostics.Debug.WriteLine("Tracking result = [" + ((HttpWebResponse)response).StatusCode + "] " + ((HttpWebResponse)response).StatusDescription);
+                System.Diagnostics.Debug.WriteLine("Tracking result = [" + response.StatusCode + "] " + response.ReasonPhrase);
             }
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine("GoogleAnalyticsHelper Tracking Exception: " + ex.Message + "\n - URL: " + url.OriginalString);
             }
 
-                if (request != null)
+                //if (request != null)
+                //{
+                //    request.Abort();
+                //    request = null;
+                //}
+                if (client != null)
                 {
-                    request.Abort();
-                    request = null;
+                    client.Dispose();
+                    client = null;
                 }
 
                 if (response != null)

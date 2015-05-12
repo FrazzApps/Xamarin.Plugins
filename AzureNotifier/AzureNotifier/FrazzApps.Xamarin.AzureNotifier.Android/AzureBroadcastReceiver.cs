@@ -14,6 +14,7 @@ using Gcm.Client;
 using WindowsAzure.Messaging;
 using Android.Util;
 using Android.Support.V4.App;
+//using Android.Resource.Drawable;
 using System.Threading;
 
 // This will prevent other apps on the device from receiving GCM messages for this app
@@ -37,7 +38,7 @@ using Microsoft.WindowsAzure.MobileServices;
 [assembly: UsesPermission(Name = "android.permission.WAKE_LOCK")]
 
 
-namespace FrazzApps.Xamarin.AzureNotifier.Droid
+namespace FrazzApps.Xamarin.AzureNotifier.Android
 {
 
 
@@ -265,7 +266,7 @@ namespace FrazzApps.Xamarin.AzureNotifier.Droid
         private void BuildNotificationIntent(string title, string desc, bool openThird = false)
         {
             var notificationManager = GetSystemService(NotificationService) as NotificationManager;
-            var notification = new Notification(Android.Resource.Drawable.SymActionEmail, title);
+            var notification = new Notification(AzureNotifier.NotificationIcon, title);
             notification.Flags = NotificationFlags.AutoCancel;
             Intent resultIntent = null;
 

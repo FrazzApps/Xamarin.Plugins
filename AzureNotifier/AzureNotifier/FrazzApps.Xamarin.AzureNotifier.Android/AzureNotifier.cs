@@ -1,7 +1,7 @@
 using FrazzApps.Xamarin.AzureNotifier.Abstractions;
 using System;
 using Xamarin.Forms;
-using FrazzApps.Xamarin.AzureNotifier.Droid;
+using FrazzApps.Xamarin.AzureNotifier.Android;
 using Gcm;
 using Android.Util;
 using WindowsAzure.Messaging;
@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 using System.Threading;
 
 [assembly: Dependency(typeof(AzureNotifier))]
-namespace FrazzApps.Xamarin.AzureNotifier.Droid
+namespace FrazzApps.Xamarin.AzureNotifier.Android
 {
 
   /// <summary>

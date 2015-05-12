@@ -82,6 +82,8 @@ namespace FrazzApps.Xamarin.LinkedInAuthenticator
             System.Diagnostics.Debug.WriteLine("Authenticating");
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(AuthenticateUri());
             request.Method = "GET";
+
+			try{
             WebResponse response = await GetResponseAsync(request);
 
             StreamReader sr = new StreamReader(response.GetResponseStream());
@@ -92,7 +94,12 @@ namespace FrazzApps.Xamarin.LinkedInAuthenticator
             AccessToken = jobj["access_token"].ToString();
             AccessTokenExpiry = DateTime.Now.AddSeconds(Double.Parse(jobj["expires_in"].ToString()));
 
-            System.Diagnostics.Debug.WriteLine("Authentication Complete");
+			}catch(Exception ex) {
+				System.Diagnostics.Debug.WriteLine("LinkedInConnection Authentication error:" + ex.Message);
+
+			}
+            
+			System.Diagnostics.Debug.WriteLine("Authentication Complete");
             this.SignInCompleted(this, new EventArgs());
         }
 
@@ -112,7 +119,7 @@ namespace FrazzApps.Xamarin.LinkedInAuthenticator
                 WebView browser = sender as WebView;
                 if (browser != null)
                 {
-                    UrlWebViewSource source = browser.Source as UrlWebViewSource;
+                     UrlWebViewSource source = browser.Source as UrlWebViewSource;
                     if (source != null)
                     {
                         // https://www.linkedin.com/connect/login_success.html?code=AQCU-FgxysBWTCSnCuqH3b4i1FOHdDwWx6huLDTABcsgPcbj4wufFAoaUmcG55FOSsYUkOCSftQnHbm9lyc7p7eI5lY07QfK4D4banQng3Aup3dFcRK1jUK1-no-d-zS6IC0JQojZAD-guPrqkgt5P1B1ch7Go96XpK3P59PhgqHOvrbE7UzkQLejbcgkzTDBOUtphOFVuHdT_ZcqCuo11Bi945DT210gYp07uZQGKFtflD6TmrFMgu6h-dkmaWELkV3efgFVAGZCqVzsn5S5yEWugE2TCgZTafkbXQ2In8u_6eYPkAzPl9xS5p-R6KxVSA#_=_

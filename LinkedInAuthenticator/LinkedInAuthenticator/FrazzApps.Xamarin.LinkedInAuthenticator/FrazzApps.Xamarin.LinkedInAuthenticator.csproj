@@ -39,6 +39,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Abstrations\ILinkedInAuthenticator.cs" />
+    <Compile Include="LinkedInIdentificationEventArgs.cs" />
     <Compile Include="LinkedInAuthenticationEventArgs.cs" />
     <Compile Include="LinkedInConnection.cs" />
     <Compile Include="LinkedInLoginPage.cs" />

@@ -10,9 +10,10 @@ using Xamarin.Forms;
 
 namespace FrazzApps.Xamarin.LinkedInAuthenticator
 {
-    internal class LinkedInConnection
+    public class LinkedInConnection
     {
-        public event EventHandler SignInCompleted;
+        public event EventHandler<LinkedInAuthenticationEventArgs> SignInCompleted;
+        public event EventHandler<LinkedInIdentificationEventArgs> GetAccountInfoCompleted;
 
         private string Key { get; set; }
         private string Secret { get; set; }
@@ -28,6 +29,8 @@ namespace FrazzApps.Xamarin.LinkedInAuthenticator
         private string RedirectURL = "http://localhost/oauth"; //TODO Set the Success page
         private const string AccessTokenURL = "https://www.linkedin.com/uas/oauth2/accessToken";
         //TODO -> private const string RequestTokenURL = "https://graph.linkedin.com/oauth/request_token";
+
+        private const string BaseAccessUrl = "https://api.linkedin.com";
 
 
         public LinkedInConnection(string key, string secret, string scope, string redirectURL)
@@ -100,16 +103,8 @@ namespace FrazzApps.Xamarin.LinkedInAuthenticator
 			}
             
 			System.Diagnostics.Debug.WriteLine("Authentication Complete");
-            this.SignInCompleted(this, new EventArgs());
+            this.SignInCompleted(this, new LinkedInAuthenticationEventArgs(this.AccessCode, this.AccessToken, this.AccessTokenExpiry));
         }
-
-
-        private  Task<WebResponse> GetResponseAsync(HttpWebRequest request)
-        {
-            if (request == null) throw new ArgumentNullException("request");
-            return Task<WebResponse>.Factory.FromAsync(request.BeginGetResponse, request.EndGetResponse, null);
-        }
-
 
 
         private void browser_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -137,6 +132,83 @@ namespace FrazzApps.Xamarin.LinkedInAuthenticator
         }
 
 
+
+        public async Task<bool> GetAccountInfo(LinkedInAuthenticationEventArgs authenticationEventArgs)
+        {
+            Uri url = new Uri(BaseAccessUrl + "/v1/people/~:(id,first-name,last-name,maiden-name,email-address)?format=json&oauth2_access_token=" + authenticationEventArgs.AccessToken);
+
+            string result = await CallApi(url);
+
+            //try
+            //{
+            //    JObject jobj = JObject.Parse(result);
+
+            //    user.Username = jobj["firstName"].ToString() + " " + jobj["lastName"].ToString();
+            //    user.Email = jobj["emailAddress"].ToString();
+            //}
+            //catch (Exception ex)
+            //{
+            //    DiagnosticsHelper.Instance.WriteLine("LinkedInConnection GetAccountInfo error:" + ex.Message);
+            //}
+
+            this.GetAccountInfoCompleted(this, new LinkedInIdentificationEventArgs(authenticationEventArgs, result));
+            return true;
+        }
+
+
+
+
+        #region Helper Functions
+
+
+        private async Task<String> CallApi(Uri url)
+        {
+            string result = "";
+
+            HttpWebRequest request = null;
+            WebResponse response = null;
+
+            request = WebRequest.Create(url) as HttpWebRequest;
+            request.Method = "GET";
+
+            try
+            {
+                response = await GetResponseAsync(request);
+
+                StreamReader sr = new StreamReader(response.GetResponseStream());
+                result = sr.ReadToEnd();
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("LinkedIn CallApi Exception: " + ex.Message + "\n - URL: " + url.OriginalString);
+            }
+            finally
+            {
+                if (request != null)
+                {
+                    request.Abort();
+                    request = null;
+                }
+
+                if (response != null)
+                {
+                    response.Dispose();
+                    response = null;
+                }
+
+            }
+
+            return result;
+        }
+
+
+        private Task<WebResponse> GetResponseAsync(HttpWebRequest request)
+        {
+            if (request == null) throw new ArgumentNullException("request");
+            return Task<WebResponse>.Factory.FromAsync(request.BeginGetResponse, request.EndGetResponse, null);
+        }
+
+
         private Dictionary<string, string> ParseQueryString(Uri uri)
         {
             var query = uri.Query.Substring(uri.Query.IndexOf('?') + 1); // +1 for skipping '?'
@@ -153,5 +225,6 @@ namespace FrazzApps.Xamarin.LinkedInAuthenticator
                     pair => Uri.UnescapeDataString(pair[1]));
         }
 
+        #endregion
     }
 }

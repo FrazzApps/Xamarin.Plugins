@@ -24,6 +24,16 @@ For valid icons please refer to: [http://fortawesome.github.io/Font-Awesome/chea
 *fontawesome-webfont.tff* is added to a Assets/Fonts/ folder, the ***Build Action*** must be changed to *Content* and ***Copy to Output Directory*** should be changed to 
 *Copy if newer*
 
+####iOS
+
+The font needs to be loaded via Info.plist
+
+    <key>UIAppFonts</key>
+    <array>
+        <string>fontawesome-webfont.ttf</string>
+    </array>
+And ensure the font is in the Resources folder and marked BundleResource.
+
 
 ##License
 Licensed under MIT see License file under main repository

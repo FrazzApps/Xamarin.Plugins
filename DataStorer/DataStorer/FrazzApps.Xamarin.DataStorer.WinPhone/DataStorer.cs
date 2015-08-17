@@ -22,12 +22,13 @@ namespace FrazzApps.Xamarin.DataStorer.WinPhone
 
         public async Task<string> LoadText(string filename)
         {
+            String result = "";
             try
             {
                 //var task = LoadTextAsync(filename);
                 //task.Wait(); // HACK: to keep Interface return types simple (sorry!)
                 //return task.Result;
-                return await LoadTextAsync(filename);
+                result = await LoadTextAsync(filename);
             }
             catch (Exception ex)
             {
@@ -35,37 +36,47 @@ namespace FrazzApps.Xamarin.DataStorer.WinPhone
                 if (ex.InnerException != null)
                     System.Diagnostics.Debug.WriteLine("\t" + ex.InnerException.Message);
             }
-            return "";
+            return result;
         }
         private async Task<string> LoadTextAsync(string filename)
         {
+            String result = "";
             StorageFolder local = Windows.Storage.ApplicationData.Current.LocalFolder;
             if (local != null)
             {
                 try
                 {
 
-                    return await TimeoutAfterAsync<string>(GetFileAsync(filename), TimeSpan.FromSeconds(5));
+                    result =  await TimeoutAfterAsync<string>(GetFileAsync(filename), TimeSpan.FromSeconds(5));
                 }
                 catch (Exception ex)
                 {
                     throw ex;
                 }
             }
-            return "";
+            return result;
         }
 
 
         private async Task<string> GetFileAsync(string filename)
         {
-            StorageFolder local = Windows.Storage.ApplicationData.Current.LocalFolder;
-            var file = await local.GetItemAsync(filename);
-            //return file.Path;
-            using (StreamReader streamReader = new StreamReader(file.Path))
+            String result = "";
+            try
             {
-                var text = streamReader.ReadToEnd();
-                return text;
+                StorageFolder local = Windows.Storage.ApplicationData.Current.LocalFolder;
+                var file = await local.GetItemAsync(filename);
+                //return file.Path;
+                using (StreamReader streamReader = new StreamReader(file.Path))
+                {
+                    var text = streamReader.ReadToEnd();
+                    result = text;
+                }
             }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("GetFileAsync Exception:" + ex.Message);
+            }
+            return result;
         }
 
         private async Task<TResult> TimeoutAfterAsync<TResult>(Task<TResult> task, TimeSpan timeout)
@@ -101,6 +112,10 @@ namespace FrazzApps.Xamarin.DataStorer.WinPhone
                     //      System.Diagnostics.Debug.WriteLine("file written");
                 }
                 //   System.Diagnostics.Debug.WriteLine(filename + "  DONE");
+#if DEBUG
+                string test = await GetFileAsync(filename);
+
+#endif
                 result = true;
             }
             catch (Exception ex)

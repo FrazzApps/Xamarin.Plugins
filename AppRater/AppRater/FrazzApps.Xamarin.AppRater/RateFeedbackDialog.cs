@@ -33,18 +33,18 @@ namespace FrazzApps.Xamarin.AppRater
             AppId = appId;
             AppName = appName;
 
-            RateMessageTitle = "Enjoying " + appName + "?";
+            RateMessageTitle = string.Format("Enjoying {0}?", appName);
             RateMessage = "We'd love you to rate our app 5 stars.\n Showing us some love on the store helps us to contrinue to work on the app and make things better!";
             RateButtonLabel = "rate 5 stars";
             RateCancelLabel = "no thanks";
 
             FeebackMessageTitle = "Can we make it better?";
-            FeebackMessage = "Sorry to hear you didn't want to rate " + appName + ".\n Tell us about your experience or suggest how we can make it even better.";
+            FeebackMessage = string.Format("Sorry to hear you didn't want to rate {0}.\n Tell us about your experience or suggest how we can make it even better.", appName);
             FeebackButtonLabel = "give feedback";
             FeebackCancelLabel = "no thanks";
 
             FeedbackEmail = feedbackEmail;
-            FeedbackSubject = appName + " Feedback";
+            FeedbackSubject = string.Format("{0} Feedback", appName);
             FeedbackBody = "";
         }
 

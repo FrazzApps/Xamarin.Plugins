@@ -26,5 +26,15 @@ namespace FrazzApps.Xamarin.AppInformer.Abstractions
         /// Get the Installer Id of the App
         /// </summary>
         string AppInstallerId { get; }
+
+        /// <summary>
+        /// Get the IP address of the device
+        /// </summary>
+        string DeviceIp { get; }
+
+        /// <summary>
+        /// Get the type of device
+        /// </summary>
+        string DeviceType { get; }
     }
 }

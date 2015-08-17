@@ -3,6 +3,10 @@ using System;
 using Xamarin.Forms;
 using FrazzApps.Xamarin.AppInformer.WinPhone;
 using Windows.ApplicationModel.Store;
+using Microsoft.Phone.Info;
+using System.Collections.Generic;
+using System.Reflection;
+using Windows.Networking.Connectivity;
 
 [assembly: Dependency(typeof(AppInformer))]
 namespace FrazzApps.Xamarin.AppInformer.WinPhone
@@ -12,10 +16,12 @@ namespace FrazzApps.Xamarin.AppInformer.WinPhone
     /// </summary>
     public class AppInformer : IAppInformer
     {
+        private static Assembly AppAssembly = null;
+
         /// <summary>
         /// Used for registration with dependency service
         /// </summary>
-        public static void Init() { }
+        public static void Init(object parent) { AppAssembly = parent.GetType().Assembly; }
 
         /// <summary>
         /// Get the name of the App - the assembly title information 
@@ -25,11 +31,11 @@ namespace FrazzApps.Xamarin.AppInformer.WinPhone
             get
             {
                 string appName = "";
-                var executingAssembly = System.Reflection.Assembly.GetExecutingAssembly();
-                var customAttributes = executingAssembly.GetCustomAttributes(typeof(System.Reflection.AssemblyTitleAttribute), false);
+                var executingAssembly = (AppAssembly!=null) ? AppAssembly : Assembly.GetExecutingAssembly();
+                var customAttributes = executingAssembly.GetCustomAttributes(typeof(AssemblyTitleAttribute), false);
                 if (customAttributes != null)
                 {
-                    var assemblyName = customAttributes[0] as System.Reflection.AssemblyTitleAttribute;
+                    var assemblyName = customAttributes[0] as AssemblyTitleAttribute;
                     appName = assemblyName.Title;
                 }
                 //string appName = Package.Current.Id.Name;
@@ -45,11 +51,11 @@ namespace FrazzApps.Xamarin.AppInformer.WinPhone
             get
             {
                 string appVersion = "";
-                var executingAssembly = System.Reflection.Assembly.GetExecutingAssembly();
-                var customAttributes = executingAssembly.GetCustomAttributes(typeof(System.Reflection.AssemblyFileVersionAttribute), false);
+                var executingAssembly = (AppAssembly != null) ? AppAssembly : Assembly.GetExecutingAssembly();
+                var customAttributes = executingAssembly.GetCustomAttributes(typeof(AssemblyFileVersionAttribute), false);
                 if (customAttributes != null)
                 {
-                    var assemblyName = customAttributes[0] as System.Reflection.AssemblyFileVersionAttribute;
+                    var assemblyName = customAttributes[0] as AssemblyFileVersionAttribute;
                     appVersion = assemblyName.Version;
                 }
                 //var version = Package.Current.Id.Version;
@@ -80,5 +86,32 @@ namespace FrazzApps.Xamarin.AppInformer.WinPhone
                 return CurrentApp.AppId.ToString();
             }
         }
+
+
+        public string DeviceIp
+        {
+            get
+            {
+                List<string> ipAddresses = new List<string>();
+                var hostnames = NetworkInformation.GetHostNames();
+                foreach (var hn in hostnames)
+                {
+                    //IanaInterfaceType == 71 => Wifi
+                    //IanaInterfaceType == 6 => Ethernet (Emulator)
+                    if (hn.IPInformation != null &&
+                       (hn.IPInformation.NetworkAdapter.IanaInterfaceType == 71
+                       || hn.IPInformation.NetworkAdapter.IanaInterfaceType == 6))
+                    {
+                        string ipAddress = hn.DisplayName;
+                        ipAddresses.Add(ipAddress);
+                    }
+                }
+
+                return ipAddresses[0];
+            }
+        }
+        public string DeviceType { get {
+        return DeviceStatus.DeviceManufacturer + " " + DeviceStatus.DeviceName + " " + DeviceStatus.DeviceHardwareVersion + " " + DeviceStatus.DeviceFirmwareVersion + " " + Environment.OSVersion;
+        } }
     }
 }

@@ -61,5 +61,9 @@ namespace FrazzApps.Xamarin.AppInformer.iOSUnified
                 return "{AppInstallerId52C95796-11A1-4247-BC3B-1F455C3298DE}";
             }
         }
+
+
+        public string DeviceIp { get { return "1.1.1.1"; } }
+        public string DeviceType { get { return "Apple"; } }
     }
 }

@@ -4,6 +4,7 @@ using Xamarin.Forms;
 using Android.Content;
 using Xamarin.Forms.Platform.Android;
 using FrazzApps.Xamarin.AppInformer.Android;
+using Java.Net;
 
 [assembly: Dependency(typeof(AppInformer))]
 namespace FrazzApps.Xamarin.AppInformer.Android
@@ -19,7 +20,7 @@ namespace FrazzApps.Xamarin.AppInformer.Android
         /// <summary>
         /// Used for registration with dependency service
         /// </summary>
-        internal static void Init(FormsApplicationActivity activity) { AppInformer.Activity = activity; }
+        public static void Init(FormsApplicationActivity activity) { AppInformer.Activity = activity; }
 
         /// <summary>
         /// Get the name of the App
@@ -66,6 +67,37 @@ namespace FrazzApps.Xamarin.AppInformer.Android
             {
                 Context context = AppInformer.Activity.ApplicationContext;
                 return context.PackageManager.GetInstallerPackageName(context.PackageName);
+            }
+        }
+
+
+        public string DeviceIp
+        {
+            get
+            {
+                Java.Util.IEnumeration networkInterfaces = NetworkInterface.NetworkInterfaces;
+                while (networkInterfaces.HasMoreElements)
+                {
+                    Java.Net.NetworkInterface netInterface = (Java.Net.NetworkInterface)networkInterfaces.NextElement();
+                    Console.WriteLine(netInterface.ToString());
+                }
+                return "1.1.1.1";
+            }
+        }
+        public string DeviceType { get { return string.Format("{0} {1}", global::Android.OS.Build.Manufacturer, global::Android.OS.Build.Model); } }
+
+        public string DeviceModal
+        {
+            get
+            {
+                // read and return current device model
+                return string.IsNullOrEmpty(global::Android.OS.Build.Model) ?
+					"Android" :
+                global::Android.OS.Build.Model.StartsWith(global::Android.OS.Build.Manufacturer) ?
+					string.Format("Android {0}", global::Android.OS.Build.Model) :
+					string.Format("Android {0} {1}", global::Android.OS.Build.Manufacturer, global::Android.OS.Build.Model);
+
+                
             }
         }
     }

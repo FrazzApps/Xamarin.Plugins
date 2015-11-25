@@ -36,7 +36,7 @@ namespace FrazzApps.Xamarin.GestureMonitor.WinPhone
             view.PropertyChanged += (_, propArgs) =>
             {
                 // subscribe to UIElement events when the attached property Renderer is set
-                if (propArgs.PropertyName == Platform.RendererProperty.PropertyName)
+                if (propArgs.PropertyName == "Renderer")//Platform.RendererProperty.PropertyName)
                 {
 
                     ViewRenderer renderer = view.GetRenderer() as ViewRenderer;
